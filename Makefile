@@ -9,7 +9,7 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = vcamoverlay
 vcamoverlay_FILES = Tweak.xm
 vcamoverlay_FRAMEWORKS = UIKit AVFoundation
-vcamoverlay_CFLAGS = -fobjc-arc
+vcamoverlay_CFLAGS = -fobjc-arc -Wno-deprecated-declarations -Wno-unused-variable
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
