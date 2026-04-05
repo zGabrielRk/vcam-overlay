@@ -1,0 +1,8 @@
+Package: com.vcam.rootless.overlay
+Name: VcamRootless + Overlay
+Version: 1.0.1
+Architecture: iphoneos-arm64
+Description: Virtual camera with LordVCAM-style overlay (volume+/- to show)
+Section: Tweaks
+Maintainer: dev
+Depends: mobilesubstrate (>= 0.9.5000)

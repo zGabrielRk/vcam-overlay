@@ -1,0 +1,41 @@
+name: Build VCam Overlay
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-13
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install System Dependencies
+        run: |
+          brew install ldid xz
+
+      - name: Setup Theos
+        uses: theos/setup-theos@main
+
+      - name: Download iOS SDKs
+        run: |
+          git clone --depth 1 https://github.com/theos/sdks.git $THEOS/sdks
+
+      - name: Build Tweak
+        run: |
+          make package FINALPACKAGE=1
+        env:
+          THEOS: ${{ env.THEOS }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vcam-overlay-build
+          path: packages/*.deb
+          if-no-files-found: error
