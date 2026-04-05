@@ -16,6 +16,7 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 # Empacotar junto com o vcamrootless original
 after-stage::
+	mkdir -p "$(THEOS_STAGING_DIR)/var/jb/Library/MobileSubstrate/DynamicLibraries/"
 	cp "$(THEOS_PROJECT_DIR)/vendor/vcamrootless.dylib" \
 	   "$(THEOS_STAGING_DIR)/var/jb/Library/MobileSubstrate/DynamicLibraries/vcamrootless.dylib"
 	cp "$(THEOS_PROJECT_DIR)/vendor/vcamrootless.plist" \
