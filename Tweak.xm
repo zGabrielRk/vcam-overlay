@@ -145,16 +145,20 @@ static VcamOverlayWindow *sharedOverlay = nil;
     y += 12;
 
     // ── Toggle: Audio Source ─────────────────────────────────────────────────
+    UISwitch *tmpAudioSwitch = nil;
     [self addToggleRow:@"Audio Source" yPos:&y width:W pad:pad
               isOn:gAudioSource
            selector:@selector(audioToggled:)
-             swRef:&_audioSwitch];
+             swRef:&tmpAudioSwitch];
+    self.audioSwitch = tmpAudioSwitch;
 
     // ── Toggle: Shortcut Floating Window ────────────────────────────────────
+    UISwitch *tmpShortcutSwitch = nil;
     [self addToggleRow:@"Shortcut Floating Window" yPos:&y width:W pad:pad
               isOn:gShortcutFloating
            selector:@selector(shortcutToggled:)
-             swRef:&_shortcutSwitch];
+             swRef:&tmpShortcutSwitch];
+    self.shortcutSwitch = tmpShortcutSwitch;
 
     y += 6;
 
